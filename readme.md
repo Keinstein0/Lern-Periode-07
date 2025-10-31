@@ -9,21 +9,21 @@ Ich will eine kleine Web-App erstellen die mit der REST API von Trello erlaubt e
 
 ## 24.10.
 
-- [ ] Arbeit an Schach
+- [X] Arbeit an Schach
 
 Heute habe ich am Chess von der Letzten LP weitergearbeitet.
 
-☝️ Vergessen Sie nicht, einen ersten Code und Skizzen auf github hochzuladen!
 
 ## 31.10.
 
-- [ ] Implementation HTML prototyp
-- [ ] Multiple canvases testen
-- [ ] Möglich auf Canvases zu malen
-- [ ] Canvases können an ML weitergesendet werden und Text wird erkannt im bereich
+- [ ] Startseite (index.html) existiert und leitet weiter an ein login
+- [ ] Login extrahiert API key und Token
+- [ ] User kann einen Workspace, Board, Liste selektieren
+- [ ] Obere Artefakte sehen ansprechend aus
 
 ✍️ Heute habe ich... (50-100 Wörter)
 
 ☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
+
 
 
