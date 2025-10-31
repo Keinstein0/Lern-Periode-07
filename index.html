@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Whiteboard</title>
+    <link rel="stylesheet" href="Styles/homepage.css">
+</head>
+<body id="background">
+    <div id="loginButton">
+        <h1>Log In</h1>
+        <p>whiteboardapp</p>
+    </div>
+
+    <script>
+    console.log("Hello world")
+
+    const key = "d56c54e8470b5bd4c31ac8d303861fea";
+    const name_ = "Whiteboard";
+    const scope = "read,write";
+    const expiration = "1day";
+    const response_type = "token";
+    const return_url = "http://127.0.0.1:3000/selector.html";
+    const callback_method = "fragment";
+
+    const TRELLO_AUTH_URL = `https://trello.com/1/authorize?expiration=${expiration}&name=${name_}&scope=${scope}&response_type=${response_type}&return_url=${encodeURIComponent(return_url)}&key=${key}`;
+
+    const button = document.getElementById("loginButton");
+    button.addEventListener("click", (e) =>{
+        window.location.href = TRELLO_AUTH_URL;
+    });
+
+    </script>
+</body>
+</html>

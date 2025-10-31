@@ -1,0 +1,108 @@
+@font-face {
+  font-family: standart;
+  src: url("../Assets/Fonts/OpenSans-VariableFont_wdth\,wght.ttf");
+}
+
+body{
+    font-family: standart;
+    background-color: rgb(44, 44, 44);
+
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(40, 40, 40);
+    margin: -1%;
+    padding-bottom: 0%;
+    border-bottom: solid rgb(105, 105, 105) 3px;
+}
+
+h1{
+    color: rgb(201, 201, 201);
+    font-size: 20px;
+}
+
+/*Workspace*/
+
+#workspace-container{
+    margin-top: 30px;
+    margin-left: 15px;
+}
+
+.workspaceTitle{
+    background-color: rgb(173, 194, 224);
+    border-radius: 8px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    max-width: fit-content;
+    font-size: 20px;;
+}
+
+.workspaceTitle:hover{
+    background-color: rgb(108, 156, 224);
+}
+
+.workspaceTitleActive{
+    background-color: rgb(41, 118, 226);
+}
+
+.workspaceImg{
+    width: 30px;
+    align-self: center;
+    margin-right: 20px;
+}
+
+.headerWrapper{
+    display: flex;
+    max-width: fit-content;
+}
+
+/*Boards*/
+
+.boardContainer{
+    background-color: rgb(69, 69, 69);
+    display:flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    box-shadow: 4px 4px 1px rgb(30, 30, 30);
+}
+
+.boardDiv{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.boardHeader{
+    font-size: 17px;
+}
+
+.listContainerActive{
+    border-left: solid black 2px
+}
+
+.listDiv {
+  position: relative;
+  padding: 0.1px 010px 0.1px 10px;
+  font-size: 15px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.listDiv::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgb(108, 156, 224);
+  transition: width 0.2s ease;
+  z-index: -1;
+}
+
+.listDiv:hover::before {
+  width: 100%;
+}

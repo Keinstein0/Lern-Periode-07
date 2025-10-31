@@ -1,0 +1,43 @@
+@font-face {
+  font-family: standart;
+  src: url("../Assets/Fonts/OpenSans-VariableFont_wdth\,wght.ttf");
+}
+
+
+body {
+  background-image: url("https://trello-backgrounds.s3.amazonaws.com/66c9d12e0562acab176e38af/original/69e00a052559fed27015146b5eebf7db/358970.jpg");
+  background-size: cover;       
+  background-position: center;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#loginButton {
+  cursor: pointer;
+}
+
+h1{
+    background-color: rgb(18, 84, 238);
+    color: white;
+    padding: 1.2rem;
+    font-size: 3rem;
+    border: none;
+    border-radius: 8px;
+    font-family: standart;
+    margin-bottom: -3%;
+    transition: 0.2s;
+}
+
+h1:hover{
+    background-color: rgba(18, 117, 238, 0.891);
+    transform: scale(1.01);
+}
+
+p{
+    color:white;
+    font-family: standart;
+}
+
