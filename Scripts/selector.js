@@ -55,7 +55,6 @@ let allWorkspaces = null;
 async function loadWorkspaces() {
     try {
         allWorkspaces = await getWorkspaces();
-        console.log(allWorkspaces);
 
         const workspaceContainer = document.getElementById("workspace-container")
 
@@ -83,12 +82,13 @@ async function loadWorkspaces() {
                     child.hidden = !child.hidden;
                     if(child.hidden){
                         workspaceHeader.classList.remove("workspaceTitleActive");
+                        boardContainter.classList.remove("boardContainerActive");
                         workspaceArrow.src = "../Assets/Img/white-up-arrow.png"
                     }
                     else{
                         workspaceHeader.classList.add("workspaceTitleActive");
+                        boardContainter.classList.add("boardContainerActive");
                         workspaceArrow.src = "../Assets/Img/white-down-arrow.png"
-
                     }
 
 
@@ -120,15 +120,14 @@ async function loadWorkspaces() {
 
 async function loadBoards(boardContainter, boardId){
     const board = await getBoard(boardId);
-    console.log(board);
 
     const boardDiv = document.createElement("div");
     const boardHeader = document.createElement("h3");
     const listContainer = document.createElement("div");
 
     boardHeader.textContent = board.name;
-    boardDiv.classList.add("boardDiv")
-    boardHeader.classList.add("boardHeader")
+    boardDiv.classList.add("boardDiv");
+    boardHeader.classList.add("boardHeader");
 
 
     boardHeader.addEventListener("click", function(event){
@@ -145,7 +144,6 @@ async function loadBoards(boardContainter, boardId){
         })
     })
     
-
     boardDiv.hidden = true;
 
     board.lists.forEach(list => {
@@ -155,6 +153,13 @@ async function loadBoards(boardContainter, boardId){
         listHeader.textContent = list.name;
         listDiv.classList.add("listDiv");
         listDiv.hidden = true;
+        listDiv.addEventListener("click", () => {
+
+            sessionStorage.setItem("boardId", board.id);
+            sessionStorage.setItem("listId", list.id)
+
+            window.location.href = "../canvas.html"
+        })
 
         listDiv.appendChild(listHeader);
         listContainer.appendChild(listDiv);

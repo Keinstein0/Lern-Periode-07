@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link rel="stylesheet" href="Styles/canvas.css">
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="animation-canvas">
+
+        </canvas>
+        
+        <canvas id="design-canvas">
+
+        </canvas>
+
+        <canvas id = "title-canvas">
+
+        </canvas>
+
+        <canvas id = "checklist-canvas">
+
+        </canvas>
+
+        <div id="tool-list-container">
+            <div id="tool-settings">
+                <div id="eraser-settings">
+                    <label for="eraser-slider">Width:</label>
+                    <input type="range" id="eraser-slider" min="1" max="10" value="5">
+                </div>
+                <div id="pencil-settings">
+                    <label for="pencil-color">Color:</label>
+                    <input type="color" id="pencil-color" value="#000000">
+
+                    <label for="pencil-slider">Width:</label>
+                    <input type="range" id="pencil-slider" min="1" max="10" value="5">
+
+                </div>
+            </div>
+            <div id="tool-list">
+                <img class="tool" src="Assets/Img/eraser.png"></img>
+                <img class="tool" src="Assets/Img/pencil.png"></img>
+                <img class="tool" src="Assets/Img/white-down-arrow.png"></img>
+            </div>
+        </div>
+    </div>
+
+    <aside id="aside">
+        <p>Todo: Create Aside</p>
+    </aside>
+
+
+
+    <script src="Scripts/canvas.js"></script>
+</body>
+</html>

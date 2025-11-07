@@ -26,6 +26,16 @@
 
     const button = document.getElementById("loginButton");
     button.addEventListener("click", (e) =>{
+        const token = sessionStorage.getItem("trelloAPItoken");
+        console.log(token)
+
+        if(token !== null){
+            console.log("HHHHHH")
+            window.location.href = `selector.html#token=${token}`
+            return
+        }
+
+
         window.location.href = TRELLO_AUTH_URL;
     });
 
