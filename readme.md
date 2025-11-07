@@ -16,14 +16,19 @@ Heute habe ich am Chess von der Letzten LP weitergearbeitet.
 
 ## 31.10.
 
-- [ ] Startseite (index.html) existiert und leitet weiter an ein login
-- [ ] Login extrahiert API key und Token
-- [ ] User kann einen Workspace, Board, Liste selektieren
-- [ ] Obere Artefakte sehen ansprechend aus
+- [X] Startseite (index.html) existiert und leitet weiter an ein login
+- [X] Login extrahiert API key und Token
+- [X] User kann einen Workspace, Board, Liste selektieren
+- [X] Obere Artefakte sehen ansprechend aus
 
-✍️ Heute habe ich... (50-100 Wörter)
+Ich konnte heute lernen wie man einen Nutzer mittels einer externen anmeldefläche authentifizieren und autorisieren kann. Zudem konnte ich heute mittels Js einen auswahlprozess entwickeln
 
-☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
+## 7.11.
+
+- [ ] Listen machen redirect zu whiteboard
+- [ ] Man kann auf whiteboard malen
+- [ ] Mehrere gestapelte whiteboards funktionieren
+- [ ] unterschiedliche maltools auswählbar
 
 
 
