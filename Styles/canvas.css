@@ -86,3 +86,15 @@ aside{
 #checklist-canvas {
     z-index: 30; 
 }
+
+#marker-container{
+    position: relative;
+}
+
+.marker{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    -webkit-user-drag: none;
+}

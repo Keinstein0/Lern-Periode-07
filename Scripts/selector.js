@@ -125,9 +125,10 @@ async function loadBoards(boardContainter, boardId){
     const boardHeader = document.createElement("h3");
     const listContainer = document.createElement("div");
 
-    boardHeader.textContent = board.name;
+    boardHeader.innerHTML = "<img src=\"Assets/Img/black-up-arrow.png\" class=\"boardHeaderArrow\"></img>" + board.name;
     boardDiv.classList.add("boardDiv");
     boardHeader.classList.add("boardHeader");
+    listContainer.classList.add("listContainer")
 
 
     boardHeader.addEventListener("click", function(event){
@@ -137,9 +138,11 @@ async function loadBoards(boardContainter, boardId){
             child.hidden = !child.hidden;
             if (child.hidden){
                 listContainer.classList.remove("listContainerActive")
+                boardHeader.innerHTML = "<img src=\"Assets/Img/black-up-arrow.png\" class=\"boardHeaderArrow\"></img>" + board.name;
             }
             else{
                 listContainer.classList.add("listContainerActive")
+                boardHeader.innerHTML = "<img src=\"Assets/Img/black-down-arrow.png\" class=\"boardHeaderArrow\"></img>" + board.name;
             }
         })
     })

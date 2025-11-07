@@ -83,8 +83,23 @@ h1{
     font-size: 17px;
 }
 
+.listContainer{
+    transition: transform 1000ms ease;
+    
+    transform: scaleY(0);
+
+    transform-origin: top;
+
+    overflow: hidden;
+    height: 0;
+}
+
 .listContainerActive{
-    border-left: solid black 2px
+    transform: scaleY(1);
+    height: auto;
+    border-left: solid black 2px;
+
+
 }
 
 .listDiv {
@@ -109,4 +124,12 @@ h1{
 
 .listDiv:hover::before {
   width: 100%;
+}
+
+.boardHeaderArrow{
+    max-width: 25px;
+    margin: 3px;
+    margin-right: 10px;
+    position: relative;
+    top: 7px;
 }

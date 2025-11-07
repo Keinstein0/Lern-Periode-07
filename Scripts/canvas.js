@@ -1,6 +1,6 @@
 // Tool Selection
 
-const TOOL_SETTINGS = ["eraser-settings","pencil-settings",null];
+const TOOL_SETTINGS = ["eraser-settings","pencil-settings","title-settings","checklist-settings"];
 
 const toolList = document.getElementById("tool-list");
 const toolListContainer = document.getElementById("tool-list-container")
@@ -107,6 +107,14 @@ function startDrawing(e){
     if (active === 1){
         canvasContainer.addEventListener("mousemove", drawPencil);
     }
+
+    if (active === 2){
+        canvasContainer.addEventListener("mousemove", drawTitle)
+    }
+
+    if (active === 3){
+        canvasContainer.addEventListener("mousemove", drawChecklist)
+    }
     
 
     canvasContainer.addEventListener("mouseup", stopDrawing);
@@ -180,6 +188,63 @@ function drawEraser(e) {
     lastY = currentY;
 }
 
+/**
+* @param {MouseEvent} e
+*/
+function drawTitle(e) {
+    if (!isDrawing) return;
+
+    const currentX = e.clientX - canvasLeft;
+    const currentY = e.clientY - canvasTop;
+
+    // Get settings TODO: Implement
+    const slider = document.getElementById("title-slider");
+
+    titleCtx.beginPath();
+    titleCtx.strokeStyle = "#00075aff"; 
+    titleCtx.lineWidth = slider.value;
+    titleCtx.lineJoin = 'round';
+    titleCtx.lineCap = 'round';
+
+
+    titleCtx.moveTo(lastX, lastY);
+
+    titleCtx.lineTo(currentX, currentY);
+    titleCtx.stroke();
+
+      // 5. Update the last position for the next movement
+    lastX = currentX;
+    lastY = currentY;
+}
+
+/**
+* @param {MouseEvent} e
+*/
+function drawChecklist(e) {
+    if (!isDrawing) return;
+
+    const currentX = e.clientX - canvasLeft;
+    const currentY = e.clientY - canvasTop;
+
+    // Get settings TODO: Implement
+    const slider = document.getElementById("checklist-slider");
+
+    titleCtx.beginPath();
+    titleCtx.strokeStyle = "#155a00ff"; 
+    titleCtx.lineWidth = slider.value;
+    titleCtx.lineJoin = 'round';
+    titleCtx.lineCap = 'round';
+
+
+    titleCtx.moveTo(lastX, lastY);
+
+    titleCtx.lineTo(currentX, currentY);
+    titleCtx.stroke();
+
+      // 5. Update the last position for the next movement
+    lastX = currentX;
+    lastY = currentY;
+}
 
 
 function stopDrawing() {
@@ -187,6 +252,8 @@ function stopDrawing() {
       canvasContainer.removeEventListener('mousemove', drawPencil);
       canvasContainer.removeEventListener('mousemove', drawEraser);
       canvasContainer.removeEventListener('mouseup', stopDrawing);
+      canvasContainer.removeEventListener("mousemove", drawTitle);
+      canvasContainer.removeEventListener("mousemove", drawChecklist);
     }
     
 canvasContainer.addEventListener("mousedown", startDrawing)

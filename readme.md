@@ -25,10 +25,16 @@ Ich konnte heute lernen wie man einen Nutzer mittels einer externen anmeldefläc
 
 ## 7.11.
 
-- [ ] Listen machen redirect zu whiteboard
-- [ ] Man kann auf whiteboard malen
-- [ ] Mehrere gestapelte whiteboards funktionieren
-- [ ] unterschiedliche maltools auswählbar
+- [X] Listen machen redirect zu whiteboard
+- [X] Man kann auf whiteboard malen
+- [X] Mehrere gestapelte whiteboards funktionieren
+- [X] unterschiedliche maltools auswählbar
 
+Ich konnte heute alle meine Ziele erreichen. Die animation funktioniert und ich konnte schon mal anfangen mit der umsetzung weiterer konzepte
 
+## 14.11.
 
+- [ ] Labels können hinzugefügt werden
+- [ ] Personen können hinzugefügt werden
+- [ ] Seite kann gespeichert werden
+- [ ] Seite kann zoomen
