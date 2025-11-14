@@ -372,6 +372,7 @@ function scrollCanvas(e) {
 }
 
 const popup = document.getElementById("popup");
+popup.hidden = true;
 
 /**
 * @param {MouseEvent} e
@@ -399,7 +400,9 @@ async function summonUser(e){
         popup.appendChild(userElement);
     });
 
-
+    popup.style.top = "500px";
+    popup.style.left = "500px";
+    popup.hidden = false;
 }
 
 document.addEventListener("click", summonUser);
