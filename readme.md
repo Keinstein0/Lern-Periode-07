@@ -37,4 +37,6 @@ Ich konnte heute alle meine Ziele erreichen. Die animation funktioniert und ich 
 - [ ] Labels können hinzugefügt werden
 - [ ] Personen können hinzugefügt werden
 - [ ] Seite kann gespeichert werden
-- [ ] Seite kann zoomen
+- [X] Seite kann zoomen
+
+Es war wesentlich mehr aufwand als erwartet die seite dazu zu bekommen zu zoomen. Ich schaffte es aber Trotzdem und konnte anfangen damit die User tags hinzuzufügen
