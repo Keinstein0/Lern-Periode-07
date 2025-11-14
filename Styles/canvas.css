@@ -98,3 +98,44 @@ aside{
     z-index: 100;
     -webkit-user-drag: none;
 }
+
+#popup{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 200;
+    background-color: darkkhaki;
+}
+
+.popup-title{
+    color: red;
+}
+
+.popup-user{
+    background-color: blueviolet;
+    display: flex;
+    margin: 5px;
+    align-items: center;
+}
+
+.popup-user img {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+.avatar-container {
+    width: 40px;          /* Set size */
+    height: 40px;
+    border-radius: 50%;   /* Make it a circle */
+    display: flex;
+    justify-content: center; /* Center text horizontally */
+    align-items: center;     /* Center text vertically */
+    color: #ffffff;       /* White text color */
+    font-size: 16px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.popup-user p{
+    color: green;
+}
