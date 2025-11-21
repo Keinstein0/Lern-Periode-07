@@ -43,7 +43,16 @@ Es war wesentlich mehr aufwand als erwartet die seite dazu zu bekommen zu zoomen
 
 ## 21.11.
 
-- [ ] Labels können hinzugefügt werden
-- [ ] Personen können hinzugefügt werden
+- [X] Labels können hinzugefügt werden
+- [X] Personen können hinzugefügt werden
 - [ ] Seite kann gespeichert werden
 - [X] Designarbeit
+
+Ich konnte heute die Labels und Personen hinzufügen was jedoch einige zeit brauchte. Das zoomen brauchte auch einige zeit bis ich es mit den Divs integrieren konnte
+
+## 29.11.
+
+- [ ] Test API requests
+- [ ] Bilder werden kompiliert
+- [ ] Bilder an API gesendet
+- [ ] Keys versteckt

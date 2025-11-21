@@ -1,3 +1,8 @@
+html{
+    overflow-y:hidden;
+}
+
+
 body{
     display: flex;
 }
@@ -105,6 +110,8 @@ aside{
     left: 100px;
     z-index: 200;
     background-color: darkkhaki;
+    max-height: 300px;
+    overflow-y: scroll;
 }
 
 .popup-title{
@@ -123,6 +130,13 @@ aside{
     max-height: 30px;
 }
 
+.popup-label{
+    background-color: blueviolet;
+    display: flex;
+    margin: 5px;
+    align-items: center;
+}
+
 .avatar-container {
     width: 40px;          /* Set size */
     height: 40px;
@@ -138,4 +152,25 @@ aside{
 
 .popup-user p{
     color: green;
+}
+
+.user{
+    position: absolute;
+    z-index: 100;
+    -webkit-user-drag: none;
+}
+
+.label{
+    position: absolute;
+    z-index: 100;
+    -webkit-user-drag: none;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 15px;
+    border-radius: 3px;
+}
+
+
+aside{
+    z-index: 1000;
 }

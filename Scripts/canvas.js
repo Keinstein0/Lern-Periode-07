@@ -43,6 +43,11 @@ function renderMemberAvatar(member) {
     }
 }
 
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // Tool Selection
 
 const TOOL_SETTINGS = ["eraser-settings","pencil-settings","title-settings","checklist-settings"];
@@ -94,7 +99,7 @@ function toggleSettings(index, onlyOff = false){
 }
 
 for(let i = 0; i < tools.length; i++){
-    tools[i].addEventListener("click", () => {
+    tools[i].addEventListener("click", async (e) => {
         if (!(i===active)){
             tools[active].classList.remove("tool-active");
             toggleSettings(active, true)
@@ -102,18 +107,59 @@ for(let i = 0; i < tools.length; i++){
 
             if (i === 4){
                 isDrawing = false;
-                scale = 1.0;
-                panX = 0;
-                panY = 0;
 
                 captureLayers();
                 canvasContainer.addEventListener("wheel", scrollCanvas);
-                applyPanZoom();
+                //applyPanZoom();
             }
             else{
                 if (active == 4){
                     canvasContainer.removeEventListener("wheel", scrollCanvas);
+                    
+                    const markers = markerContainer.children;
+                    for (let j = 0; j < markers.length; j++){ // Use 'j' to avoid 'i'
+                        const marker = markers[j];
+                        if (marker.classList.contains("user")){
+                            marker.xOrigin = (marker.xOrigin * scale) + panX;
+                            marker.yOrigin = (marker.yOrigin * scale) + panY;
+                            marker.scaleOrigin = marker.scaleOrigin * scale;
+                        }
+
+                        if (marker.classList.contains("label")){
+                            marker.xOrigin = (marker.xOrigin * scale) + panX;
+                            marker.yOrigin = (marker.yOrigin * scale) + panY;
+                            marker.scaleOrigin = marker.scaleOrigin * scale;
+                        }
+                    }
+
+
                     applyPanZoom();
+                    await captureLayers();
+                    
+                    scale = 1.0;
+                    panX = 0;
+                    panY = 0;
+
+                    applyPanZoom();
+                }
+            }
+            if (i === 5){
+                e.stopPropagation();
+                canvasContainer.addEventListener("click", summonUser);
+            }
+            else{
+                if (active === 5){
+                    canvasContainer.removeEventListener("click", summonUser)
+                }
+            }
+
+            if (i === 6){
+                e.stopPropagation();
+                canvasContainer.addEventListener("click", summonLabel);
+            }
+            else{
+                if (active === 6){
+                    canvasContainer.removeEventListener("click", summonLabel)
                 }
             }
 
@@ -191,6 +237,8 @@ function startDrawing(e){
         //captureLayers();
         canvasContainer.addEventListener("mousemove", moveCanvas)
     }
+
+
 
     isDrawing = true;
     canvasContainer.addEventListener("mouseup", stopDrawing);
@@ -372,24 +420,56 @@ function scrollCanvas(e) {
 }
 
 const popup = document.getElementById("popup");
+const markerContainer = document.getElementById("marker-container");
 popup.hidden = true;
+let popupActive = false;
+let userSize = 50;
 
 /**
 * @param {MouseEvent} e
 */
 async function summonUser(e){
+    if(popupActive){
+        return
+    }
+    
+    
     const x = e.clientX + canvasLeft;
     const y = e.clientY + canvasTop;
 
     popup.innerHTML = "<p class=\"popup-title\">Personen Hinzufügen</p>";
 
     const users = await getUsers();
-    console.log(users);
     users.forEach((user) => {
         const userElement = document.createElement("div");
         userElement.classList.add("popup-user");
 
         const pfp = renderMemberAvatar(user);
+
+        userElement.addEventListener("click", async (e) => {
+            pfp.classList.add("user")
+            pfp.style.left = x-10 + "px";
+            pfp.style.top = y-10 + "px";
+            pfp.style.width = userSize + "px";
+
+            pfp.xOrigin = x - 10;
+            pfp.yOrigin = y - 10;
+            pfp.scaleOrigin = userSize;
+
+            pfp.addEventListener("click", () => {
+                //console.log("Delet" + active)
+                if (active === 0){
+                    markerContainer.removeChild(pfp)
+                }
+            });
+
+            markerContainer.appendChild(pfp);
+            e.stopPropagation();
+            console.log(pfp)
+            popupActive = false;
+            popup.hidden = true;
+        })
+
 
         const name = document.createElement("p");
         name.textContent = user.username;
@@ -400,12 +480,74 @@ async function summonUser(e){
         popup.appendChild(userElement);
     });
 
-    popup.style.top = "500px";
-    popup.style.left = "500px";
+    popup.style.left = x-10 + "px";
+    popup.style.top = y-10 + "px";
     popup.hidden = false;
+    popupActive = true;
 }
 
-document.addEventListener("click", summonUser);
+
+let labelSize = 20;
+async function summonLabel(e){
+    if(popupActive){
+        return
+    }
+    
+    
+    const x = e.clientX + canvasLeft;
+    const y = e.clientY + canvasTop;
+
+    popup.innerHTML = "<p class=\"popup-title\">Labels Hinzufügen</p>";
+
+    const labels = await getLabels();
+    console.log(labels)
+    labels.forEach((label) => {
+        if (label.name === ""){
+            return;
+        }
+
+
+        const labelElement = document.createElement("div");
+        labelElement.classList.add("popup-label");
+
+        const title = document.createElement("h4");
+        title.textContent = label.name;
+        title.style.backgroundColor = trelloLabelColors[label.color];
+        
+
+        labelElement.addEventListener("click", async (e) => {
+            title.classList.add("label")
+            title.style.left = x-10 + "px";
+            title.style.top = y-10 + "px";
+            title.style.fontSize = labelSize + "px";
+
+            title.xOrigin = x - 10;
+            title.yOrigin = y - 10;
+            title.scaleOrigin = labelSize;
+
+            title.addEventListener("click", () => {
+                //console.log("Delet" + active)
+                if (active === 0){
+                    markerContainer.removeChild(title)
+                }
+            });
+
+            markerContainer.appendChild(title);
+            e.stopPropagation();
+            console.log(title)
+            popupActive = false;
+            popup.hidden = true;
+        })
+
+        labelElement.appendChild(title);
+        popup.appendChild(labelElement);
+    });
+
+    popup.style.left = x-10 + "px";
+    popup.style.top = y-10 + "px";
+    popup.hidden = false;
+    popupActive = true;
+}
 
 function stopDrawing() {
       isDrawing = false;
@@ -417,8 +559,6 @@ function stopDrawing() {
       canvasContainer.removeEventListener("mousemove", moveCanvas);
     }
 canvasContainer.addEventListener("mousedown", startDrawing)
-
-
 
 
 // Utility
@@ -484,6 +624,26 @@ function applyPanZoom() {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     });
 
+    const markers = markerContainer.children;
+    for (let i = 0; i < markers.length; i++){
+        const marker = markers[i];
+        if (marker.classList.contains("user")){
+            // The origin position must be scaled, then panned
+            marker.style.left = (marker.xOrigin * scale) + panX + "px";
+            marker.style.top = (marker.yOrigin * scale) + panY + "px";
+            marker.style.width = (marker.scaleOrigin * scale) + "px";
+        }
+
+        if(marker.classList.contains("label")){
+            marker.style.left = (marker.xOrigin * scale) + panX + "px";
+            marker.style.top = (marker.yOrigin * scale) + panY + "px";
+            marker.style.fontSize = (marker.scaleOrigin * scale) + "px";
+        }
+    }
+
+
+
+
     console.log(panX, panY, scale)
     
     // --- Design Layer ---
@@ -521,4 +681,58 @@ const AVATAR_COLORS = [
     '#ff9800', // Orange
     '#607d8b'  // Blue Grey
 ];
+
+// Nahh i aint doing that by hand (GPT has carried here)
+const trelloLabelColors = {
+  // --- BLUE SHADES ---
+  "blue": "#0079BF",
+  "blue_light": "#BBD5EE",
+  "blue_dark": "#055A8C",
+
+  // --- GREEN SHADES ---
+  "green": "#70B500",
+  "green_light": "#C3E570",
+  "green_dark": "#438400",
+
+  // --- ORANGE SHADES ---
+  "orange": "#FF9F1A",
+  "orange_light": "#FFD380",
+  "orange_dark": "#B36700",
+
+  // --- RED SHADES ---
+  "red": "#EB5A46",
+  "red_light": "#FFAD99",
+  "red_dark": "#B33E2B",
+
+  // --- YELLOW SHADES ---
+  "yellow": "#F2D600",
+  "yellow_light": "#F8EC79",
+  "yellow_dark": "#C5A800",
+
+  // --- PURPLE SHADES ---
+  "purple": "#C377E0",
+  "purple_light": "#E9C0F4",
+  "purple_dark": "#89609E",
+
+  // --- PINK SHADES ---
+  "pink": "#FF78CB",
+  "pink_light": "#FFC7E0",
+  "pink_dark": "#B34F8C",
+
+  // --- SKY SHADES ---
+  "sky": "#00C2E0",
+  "sky_light": "#C3F0F7",
+  "sky_dark": "#008DA6",
+
+  // --- LIME SHADES ---
+  "lime": "#51E898",
+  "lime_light": "#C0F6D5",
+  "lime_dark": "#36B373",
+
+  // --- BLACK/GREY SHADES ---
+  "black": "#344563", // Trello's "Black" or dark grey
+  "black_light": "#B3BAC5",
+  "black_dark": "#091E42",
+  "grey": "#C4C9CC", // Often used as the default/uncolored label
+};
 
