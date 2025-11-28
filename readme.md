@@ -50,7 +50,7 @@ Es war wesentlich mehr aufwand als erwartet die seite dazu zu bekommen zu zoomen
 
 Ich konnte heute die Labels und Personen hinzufügen was jedoch einige zeit brauchte. Das zoomen brauchte auch einige zeit bis ich es mit den Divs integrieren konnte
 
-## 29.11.
+## 28.11.
 
 - [X] Test API requests
 - [X] Bilder werden kompiliert
@@ -58,3 +58,9 @@ Ich konnte heute die Labels und Personen hinzufügen was jedoch einige zeit brau
 - [X] Keys versteckt
 
 Ich konnte heute alles handgeschriebene => Text implementieren und das ganze objekt parat für das absenden ans trello board machen. Als nächsten schritt müsste ich nur noch das Packet an Trello senden. Damit wäre die Core Functionality dann schon implementiert
+
+## 5.12.
+- [ ] Daten an Trello versendet
+- [ ] Man kommt aus kameratool heraus
+- [ ] Overlay Stylen
+- [ ] Maltools Stylen (auch Tagselektion)
