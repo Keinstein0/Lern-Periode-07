@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link rel="stylesheet" href="Styles/canvas.css">
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="animation-canvas">
+
+        </canvas>
+        
+        <canvas id="design-canvas">
+
+        </canvas>
+
+        <canvas id = "title-canvas">
+
+        </canvas>
+
+        <canvas id = "checklist-canvas">
+
+        </canvas>
+
+        <div id="marker-container">
+            <div id="popup">
+                <h3 class="popup-title">Select user</h3>
+                <div class="popup-user">
+                    <img src="Assets/Img/user.png">
+                    <p>Username</p>
+                </div>
+
+                <div class="popup-user">
+                    <img src="Assets/Img/user.png">
+                    <p>Username</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tool-list-container">
+            <div id="tool-settings">
+                <div id="eraser-settings">
+                    <label for="eraser-slider">Width:</label>
+                    <input type="range" id="eraser-slider" min="1" max="10" value="5">
+                </div>
+                <div id="pencil-settings">
+                    <label for="pencil-color">Color:</label>
+                    <input type="color" id="pencil-color" value="#000000">
+
+                    <label for="pencil-slider">Width:</label>
+                    <input type="range" id="pencil-slider" min="1" max="10" value="5">
+                </div>
+                <div id="title-settings">
+                    <label for="title-slider">Width:</label>
+                    <input type="range" id="title-slider" min="1" max="10" value="5">
+                </div>
+                <div id="checklist-settings">
+                    <label for="checklist">Width:</label>
+                    <input type="range" id="checklist-slider" min="1" max="10" value="5">
+                </div>
+            </div>
+            <div id="tool-list">
+                <img class="tool" src="Assets/Img/eraser.png"></img>
+                <img class="tool" src="Assets/Img/pencil.png"></img>
+                <img class="tool" src="Assets/Img/title.png"></img>
+                <img class="tool" src="Assets/Img/checklist.png"></img>
+                <img class="tool" src="Assets/Img/mouse.png"></img>
+                <img class="tool" src="Assets/Img/user.png"></img>
+                <img class="tool" src="Assets/Img/label.png"></img>
+                <img class="tool" src="Assets/Img/camera.png"></img>
+            </div>
+        </div>
+    </div>
+
+    <aside id="aside">
+        <p>Todo: Create Aside</p>
+    </aside>
+
+    <div id="overlay">
+        <div id="overlay-container">
+            <h3 id="overlay-title" contenteditable>Card Title</h3>
+            <ul id="overlay-list" contenteditable>
+                <li>list</li>
+                <li>Elements</li>
+            </ul>
+
+            <label for="people">Members:</label>
+            <div name="people", id="overlay-member">
+
+            </div>
+
+            <label for="tags">Tags:</label>
+            <div name="tags" id="overlay-label">
+
+            </div>
+
+
+            <button id="overlay-button">Confirm</button>
+        </div>
+    </div>
+
+
+
+    <script type="module" src="Scripts/requests.js"></script>
+    <script type="module" src="Scripts/canvas.js"></script>
+</body>
+</html>

@@ -52,7 +52,9 @@ Ich konnte heute die Labels und Personen hinzufügen was jedoch einige zeit brau
 
 ## 29.11.
 
-- [ ] Test API requests
-- [ ] Bilder werden kompiliert
-- [ ] Bilder an API gesendet
-- [ ] Keys versteckt
+- [X] Test API requests
+- [X] Bilder werden kompiliert
+- [X] Bilder an API gesendet
+- [X] Keys versteckt
+
+Ich konnte heute alles handgeschriebene => Text implementieren und das ganze objekt parat für das absenden ans trello board machen. Als nächsten schritt müsste ich nur noch das Packet an Trello senden. Damit wäre die Core Functionality dann schon implementiert
