@@ -69,3 +69,5 @@ Ich konnte heute alles handgeschriebene => Text implementieren und das ganze obj
 ## Reflexion
 Ich war leider das letzte mal nicht da und konnte somit leider nicht komplett fertig werden. Ich konnte jedoch die wichtigsten features alle implementieren. Ich werde wahrscheinlich über die Frühlingsferien weiter an diesem Projekt arbeiten da ich es noch unbedingt fertig machen will. Obwohl ich die wichtigsten funktionen einbauen konnte würde ich sehr gerne weitere nützliche features (undo, mehrere seiten, besseres design) implementieren. Am interessantesten fand ich wahrscheinlich schon das implementieren der OCR API die Handschrift zu Text konvertiert und ins Trello stellt. Ich konnte viel über die implementierung von Security mittels tokens und die Verwendung einer Vollständigen REST API zum modifizieren eines bestehenden Produkes lernen. Ich will diese Seite noch unbedingt fertig machen und sie dann Tatsächlich einsetzen.
 
+![Bildschirmaufnahme2025-12-19104312-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/f4d2cc8f-20c5-4427-98b8-35204d0045b4)
+
