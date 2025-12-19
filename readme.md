@@ -59,8 +59,13 @@ Ich konnte heute die Labels und Personen hinzufügen was jedoch einige zeit brau
 
 Ich konnte heute alles handgeschriebene => Text implementieren und das ganze objekt parat für das absenden ans trello board machen. Als nächsten schritt müsste ich nur noch das Packet an Trello senden. Damit wäre die Core Functionality dann schon implementiert
 
-## 5.12.
-- [ ] Daten an Trello versendet
-- [ ] Man kommt aus kameratool heraus
+## 19.12.
+- [X] Daten an Trello versendet
+- [X] Man kommt aus kameratool heraus
 - [ ] Overlay Stylen
 - [ ] Maltools Stylen (auch Tagselektion)
+
+
+## Reflexion
+Ich war leider das letzte mal nicht da und konnte somit leider nicht komplett fertig werden. Ich konnte jedoch die wichtigsten features alle implementieren. Ich werde wahrscheinlich über die Frühlingsferien weiter an diesem Projekt arbeiten da ich es noch unbedingt fertig machen will. Obwohl ich die wichtigsten funktionen einbauen konnte würde ich sehr gerne weitere nützliche features (undo, mehrere seiten, besseres design) implementieren. Am interessantesten fand ich wahrscheinlich schon das implementieren der OCR API die Handschrift zu Text konvertiert und ins Trello stellt. Ich konnte viel über die implementierung von Security mittels tokens und die Verwendung einer Vollständigen REST API zum modifizieren eines bestehenden Produkes lernen. Ich will diese Seite noch unbedingt fertig machen und sie dann Tatsächlich einsetzen.
+
