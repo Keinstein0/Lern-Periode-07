@@ -91,3 +91,119 @@ export async function getTextOnImage(image){
     return text;
 }
 
+
+export async function postCard(name, members, labels){
+    console.log("POSTING CARD...")
+    const body = {
+        "name" : name,
+        "idMembers" : members,
+        "idLabels" : labels
+    }
+
+    // Todo Update eh
+    const url = `https://api.trello.com/1/cards?idList=${LIST}&key=${KEY}&token=${TOKEN}`
+    const rawResponse = await fetch(url, {
+        method : "POST",
+        body : JSON.stringify(body),
+        headers : {
+            "Content-Type" : "application/json"
+        }
+    })
+
+    const content = await rawResponse.json()
+    if (content.IsErroredOnProcessing){
+        return null
+    }
+
+    console.log(content)
+
+    return content.id
+}
+
+export async function postChecklist(list, cardId) {
+    // 1. Create the Checklist container
+    const checklistUrl = `https://api.trello.com/1/checklists?idCard=${cardId}&name=Checklist&key=${KEY}&token=${TOKEN}`;
+    
+    const checklistResponse = await fetch(checklistUrl, { 
+        method: "POST" 
+    });
+
+    if (!checklistResponse.ok) {
+        console.error("Failed to create checklist container");
+        return null;
+    }
+
+    const checklistData = await checklistResponse.json();
+    const checklistId = checklistData.id;
+
+    // 2. Add each item from your 'list' array to the new checklist
+    // We use Promise.all to send these requests in parallel for better speed
+    const itemPromises = list.map(itemName => {
+        const itemUrl = `https://api.trello.com/1/checklists/${checklistId}/checkItems?name=${encodeURIComponent(itemName)}&key=${KEY}&token=${TOKEN}`;
+        return fetch(itemUrl, { method: "POST" });
+    });
+
+    try {
+        await Promise.all(itemPromises);
+        console.log(`Successfully added ${list.length} items to checklist ${checklistId}`);
+        return checklistId;
+    } catch (error) {
+        console.error("Error adding items to checklist:", error);
+        return checklistId; // Returns the ID even if some items failed
+    }
+}
+
+export async function getList(){
+    const url = `https://api.trello.com/1/lists/${LIST}?key=${KEY}&token=${TOKEN}`;
+
+    const rawResponse = await fetch(url, {
+        method : "GET",
+        headers : {
+            "Content-Type" : "application/json"
+        }
+    })
+
+    const content = await rawResponse.json()
+    if (content.IsErroredOnProcessing){
+        return null
+    }
+
+    return content.name;
+}
+
+export async function getCurrentUser() {
+    const url = `https://api.trello.com/1/tokens/${TOKEN}/member?key=${KEY}&token=${TOKEN}`;
+
+    const rawResponse = await fetch(url, {
+        method : "GET",
+        headers : {
+            "Content-Type" : "application/json"
+        }
+    })
+
+    const content = await rawResponse.json()
+    if (content.IsErroredOnProcessing){
+        return null
+    }
+
+    const publicAvatarUrl = content.avatarHash 
+        ? `https://trello-members.s3.amazonaws.com/${content.id}/${content.avatarHash}/50.png` 
+        : null;
+
+    return [content.fullName,publicAvatarUrl]
+}
+
+export async function getCards(params) {
+    const url = `https://api.trello.com/1/lists/${LIST}/cards?key=${KEY}&token=${TOKEN}&members=true&labels=all`;
+
+    const rawResponse = await fetch(url, {
+        method : "GET",
+        headers : {
+            "Content-Type" : "application/json"
+        }
+    })
+    const content = await rawResponse.json()
+    console.log(content)
+
+    return content;
+}

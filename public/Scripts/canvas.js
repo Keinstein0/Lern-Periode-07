@@ -1,4 +1,4 @@
-import {getUsers, getLabels, getTextOnImage} from "./requests.js";
+import {getUsers, getLabels, postCard, postChecklist, getTextOnImage} from "./requests.js";
 
 
 // Utility
@@ -636,7 +636,8 @@ async function lockSelectionCanvas(e){
     const labelElement = document.getElementById("overlay-label");
 
 
-    const confirmElement = document.getElementById("overlay-button");
+    const confirmElement = document.getElementById("overlay-button-confirm");
+    const discardElement = document.getElementById("overlay-button-discard");
 
 
     if (title == ""){
@@ -649,13 +650,16 @@ async function lockSelectionCanvas(e){
     memberElement.innerHTML = "";
     labelElement.innerHTML = "";
 
+    let checklistItems = []
+
     if (checklist){
         const lines = checklist.split("\n");
         lines.forEach(line => {
-            const trimmed = line.trim();
+            const trimmed = line.replace(/^[\s-]|[\s-]$/g, '');
             const item = document.createElement("li");
             item.textContent = trimmed;
             listElement.appendChild(item)
+            checklistItems.push(trimmed);
         })
     }
     
@@ -703,6 +707,16 @@ async function lockSelectionCanvas(e){
     }
 
 
+    discardElement.addEventListener("click", () => {
+        overlay.style.visibility = "hidden";
+    }, { once: true });
+
+    confirmElement.addEventListener("click", async () => {
+        overlay.style.visibility = "hidden";
+
+        const id = await postCard(title, userIDs, labelIDs);
+        await postChecklist(checklistItems, id)
+    }, { once: true });
 
 
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>title</title>
     <link rel="stylesheet" href="Styles/canvas.css">
+    <link rel="stylesheet" href="Styles/aside.css">
 </head>
 <body>
     <div id="canvas-container">
@@ -74,7 +75,29 @@
     </div>
 
     <aside id="aside">
-        <p>Todo: Create Aside</p>
+        <h1 id="aside-list-name">ListName</h1>
+        <div id="aside-card-container">
+            <div class="aside-card">
+                <div class="aside-label-container">
+                    <div class="aside-label"></div>
+                </div>
+                    <h2 class="aside-card-title">CardTitle</h2>
+                    <div class="aside-members-container">
+                        <img class="aside-member" src="Assets/Img/user.png">
+                        <img class="aside-member" src="Assets/Img/user.png">
+                        <img class="aside-member" src="Assets/Img/user.png">
+                        <img class="aside-member" src="Assets/Img/user.png">
+                    </div>
+            </div>
+        </div>
+
+        <div id="aside-currentuser">
+            <div>
+                <img id="aside-currentuser-img" src="Assets/Img/user.png">
+                <h2 id="aside-currentuser-user">username</h2>
+            </div>
+            <button id="aside-currentuser-logout">Logout</button>
+        </div>
     </aside>
 
     <div id="overlay">
@@ -96,7 +119,8 @@
             </div>
 
 
-            <button id="overlay-button">Confirm</button>
+            <button id="overlay-button-confirm">Confirm</button>
+            <button id="overlay-button-discard">Discard</button>
         </div>
     </div>
 
@@ -104,5 +128,6 @@
 
     <script type="module" src="Scripts/requests.js"></script>
     <script type="module" src="Scripts/canvas.js"></script>
+    <script type="module" src="Scripts/aside.js"></script>
 </body>
 </html>

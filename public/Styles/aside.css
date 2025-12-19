@@ -1,0 +1,119 @@
+@font-face {
+  font-family: standart;
+  src: url("../Assets/Fonts/OpenSans-VariableFont_wdth\,wght.ttf");
+}
+
+body{
+    font-family: standart;
+    margin: 0;
+    padding: 0;
+}
+
+
+aside {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border-left: solid #0d0e03 8px;
+
+}
+
+#aside-list-name{
+    padding: 10px;
+    color: rgb(216, 216, 216);
+}
+
+#aside-card-container{
+    background: #0d0e03;
+    overflow-y: scroll;
+
+    scrollbar-color: #acb827;
+    scrollbar-width: thin;
+
+
+    flex-grow: 1;
+    padding: 6px
+}
+
+.aside-card {
+    background-color: #3a3b3f;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    padding: 1px;
+}
+
+.aside-label-container{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px;
+}
+
+.aside-label{
+    height: 8px;
+    width: 45px;
+    border-radius: 1000px;
+}
+
+.aside-card-title{
+    color: rgb(216, 216, 216);
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.aside-members-container{
+    display: flex;
+    flex-direction: row;      /* Items stay in a line (this is default) */
+    justify-content: flex-end; /* Pushes the entire group to the right */
+    flex-wrap: wrap;
+    gap: 10px;                /* Space between the buttons */
+    margin: 10px
+}
+
+.aside-member{
+    max-width: 30px;
+}
+
+
+
+
+
+#aside-currentuser{
+    background-color:rgb(47, 47, 47);
+    flex-shrink: 0;
+    padding: 10px;
+}
+
+#aside-currentuser div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+#aside-currentuser-img{
+    max-width: 50px;
+    max-height: 50px;
+}
+
+#aside-currentuser-user{
+    color: rgb(216, 216, 216);
+    text-align: center;
+    font-size: 16px;
+}
+
+#aside-currentuser-logout{
+    padding-left: 40%;
+    padding-right: 40%;
+    border-radius: 2000px;
+    background-color: #298FCA;
+    border: none
+}
+
+#aside-currentuser-logout:hover{
+    background-color: #3e99ce;
+}

@@ -73,8 +73,8 @@ body{
 
 
 aside{
-    background-color: rgb(122, 126, 244);
-    min-width: 20%;
+    background: radial-gradient(circle,rgb(0, 0, 0) 0%, rgb(58, 58, 58) 100%);
+    width: 20%;
 }
 #animation-canvas {
     z-index: 40; 
